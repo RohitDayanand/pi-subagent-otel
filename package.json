@@ -1,0 +1,41 @@
+{
+	"name": "pi-subagent-otel",
+	"version": "0.1.0",
+	"description": "Trace a pi session and its pi-subagents fleet as OpenTelemetry GenAI spans: parent and subagent LLM and tool calls, runs, and process boundaries.",
+	"type": "module",
+	"license": "MIT",
+	"author": "Rohit Dayanand",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/RohitDayanand/pi-subagent-otel.git"
+	},
+	"homepage": "https://github.com/RohitDayanand/pi-subagent-otel#readme",
+	"bugs": "https://github.com/RohitDayanand/pi-subagent-otel/issues",
+	"keywords": ["pi-package", "pi", "pi-subagents", "opentelemetry", "otel", "tracing", "genai", "jaeger"],
+	"engines": {
+		"node": ">=22.19.0"
+	},
+	"files": ["*.ts", "sources/*.ts", "dist", "README.md", "DESIGN.md", "LICENSE"],
+	"pi": {
+		"extensions": ["./index.ts"]
+	},
+	"bin": {
+		"pi-subagent-otel-push": "./dist/push-otlp.js"
+	},
+	"scripts": {
+		"build": "tsc -p tsconfig.build.json",
+		"check": "tsc -p tsconfig.json",
+		"test": "vitest --run",
+		"prepublishOnly": "npm run check && npm test && npm run build"
+	},
+	"peerDependencies": {
+		"@earendil-works/pi-coding-agent": "*"
+	},
+	"devDependencies": {
+		"@earendil-works/pi-coding-agent": "1.1.0",
+		"@earendil-works/pi-telemetry": "1.1.0",
+		"@types/node": "22.19.19",
+		"typescript": "5.9.3",
+		"vitest": "4.1.9"
+	}
+}
